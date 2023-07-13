@@ -7,4 +7,4 @@ if n % 2 != 0:
     save = a
     a = b
     b = save
-print(a,"/", b, sep="")
+print(f'{a}/{b}')
