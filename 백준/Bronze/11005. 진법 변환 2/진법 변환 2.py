@@ -5,13 +5,13 @@ while True:
     if N // B**i == 0: break
     i += 1
 
-arr = [0]*i
+ans = ''
 for j in range(i):
     n, m = divmod(N, B**(i-j-1))
     if n < 10:
-        arr[j] = n
+        ans += str(n)
     else:
-        arr[j] = chr(n + 55)
+        ans += chr(n + 55)
     N = m
-print(*arr, sep='')
+print(ans)
     
