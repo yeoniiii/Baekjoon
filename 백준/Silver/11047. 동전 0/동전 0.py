@@ -9,7 +9,7 @@ for i in range(N):
     if coin[N-i-1] <= K:
         n += K // coin[N-i-1]
         K = K % coin[N-i-1]
-    if K < 0:
+    if K <= 0:
         break
 
 print(n)
