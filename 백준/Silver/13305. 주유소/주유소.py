@@ -1,15 +1,16 @@
 N = int(input())
-road = list(map(int, input().split()))
+dist = list(map(int, input().split()))
 oil = list(map(int, input().split()))
-cost = 0
-for i in range(len(road)):
-    if road[i] == 0:
-        pass
-    elif oil[i] >= oil[i+1]:
-        cost += oil[i] * road[i]
-        road[i] = 0
+cost, i, id = 0, 0, 1
+
+while i + id < N:
+    if oil[i] > oil[i + id]:
+        cost += oil[i] * sum(dist[i:(i+id)])
+        i += id
+        id = 1
     else:
-        cost += oil[i] * (road[i] + road[i+1])
-        road[i] = road[i+1] = 0
+        id += 1
+else:
+    cost += oil[i] * sum(dist[i:])
+
 print(cost)
-        
