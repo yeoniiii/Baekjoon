@@ -6,6 +6,6 @@ for i in range(1, 10001):
     arr.append(i_sum)
 for i in range(1, 10001):
     if i in arr:
-        continue
+        pass
     else:
         print(i)
