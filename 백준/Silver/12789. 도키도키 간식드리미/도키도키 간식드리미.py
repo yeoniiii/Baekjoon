@@ -3,14 +3,14 @@ arr = list(map(int, input().split()))
 arr_save = []
 order = 1
 
-while len(arr) > 0:
+while arr:
     if arr[0] == order:
         arr.pop(0)
         order += 1
     else:
         arr_save.append(arr.pop(0))
         
-    while len(arr_save) > 0:
+    while arr_save:
         if arr_save[-1] == order:
             arr_save.pop()
             order += 1
