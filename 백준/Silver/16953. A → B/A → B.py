@@ -1,7 +1,6 @@
 from collections import deque
 
 A, B = map(int, input().split())
-arr = []
 
 def bfs(x):
     arr = []
@@ -11,15 +10,10 @@ def bfs(x):
     while q:
         v, cnt = q.popleft()
         if v == B:
-            arr.append(cnt)
+            return cnt + 1
         elif v < B:
-            cnt += 1
-            q.append((v*2, cnt))
-            q.append((int(str(v)+'1'), cnt))
-    return arr
+            q.append((v*2, cnt+1))
+            q.append((int(str(v)+'1'), cnt+1))
+    return -1
     
-arr = bfs(A)
-if len(arr) > 0:
-    print(min(arr)+1)
-else:
-    print(-1)
+print(bfs(A))
