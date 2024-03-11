@@ -1,35 +1,33 @@
 import sys
 input = lambda: sys.stdin.readline().rstrip()
-import heapq
-INF = int(1e9)
+from collections import deque
 
 N, M, K, X = map(int, input().split())
 graph = [[] for _ in range(N+1)]
+visited = [0] * (N+1)
+num = [0] * (N+1)
+
 for i in range(M):
     a, b = map(int, input().split())
-    graph[a].append((b, 1))
-distance = [INF] * (N+1)
-
-def dijkstra(start):
-    q = []
-    heapq.heappush(q, (0, start))
-    distance[start] = 0
+    graph[a].append(b)
+    
+def bfs(start):
+    q = deque()
+    q.append(start)
+    visited[start] = 1
     while q:
-        dist, now = heapq.heappop(q)
-        if distance[now] < dist:
-            continue
-        for i in graph[now]:
-            cost = dist + i[1]
-            if cost < distance[i[0]]:
-                distance[i[0]] = cost
-                heapq.heappush(q, (cost, i[0]))
-
-dijkstra(X)
+        v = q.popleft()
+        for i in graph[v]:
+            if visited[i] == 0:
+                q.append(i)
+                visited[i] = 1
+                num[i] = num[v] + 1
+          
+bfs(X)
 ans = []
+
 for i in range(1, N+1):
-    if distance[i] == INF:
-        continue
-    elif distance[i] == K:
+    if num[i] == K:
         ans.append(i)
 if len(ans) == 0:
     print(-1)
