@@ -4,11 +4,7 @@ l, r = 0, n
 min_n = n+1
 
 while l <= r:
-    mid = (l + r) / 2
-    if mid % 1 >= 0.5:
-        mid = int(mid) + 1
-    else:
-        mid = int(mid)
+    mid = (l + r) // 2
 
     if mid**2 < n:
         l = mid + 1
