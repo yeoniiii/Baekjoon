@@ -2,26 +2,26 @@ N, K = map(int, input().split())
 A = list(map(int, input().split()))
 t = 0
 
-while A:
-    a0 = A[0]
-    diff = 0
-    for a in A[:K]:
-        if a != a0:
-            diff = 1
-    if diff == 1:
-        del1, del2 = 0, 0
-        for i in range(K):
-            if del1 == del2 == 1:
+if N == K:
+    num = {1:0, 2:0}
+    for a in A:
+        num[a] += 1
+    print(max(num[1], num[2]))
+else:
+    while A:
+        a0 = A[0]
+        diff = 0
+        for i in range(min(K, len(A))):
+            if A[i] != a0:
+                diff = 1
+                del_i = i
                 break
-            if A[i] == 1 and del1 == 0:
-                A.pop(i)
-                del1 += 1
-            elif A[i] == 2 and del2 == 0:
-                A.pop(i)
-                del2 += 1
-        t += 1
-    else:
-        A.pop(0)
-        t += 1
+        if diff == 1:
+            A.pop(del_i)
+            A.pop(0)
+            t += 1
+        else:
+            A.pop(0)
+            t += 1
 
-print(t)
+    print(t)
