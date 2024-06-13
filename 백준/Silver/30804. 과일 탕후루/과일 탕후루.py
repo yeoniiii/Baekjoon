@@ -3,11 +3,11 @@ sys.setrecursionlimit(10**6)
 
 N = int(input())
 S = list(map(int, input().split()))
-num = [0] * (max(S)+1)
+num = [0] * 10
 
 def tanghuru(start, end, max_num, kind):
     global N
-    if start > end or end >= N:
+    if end >= N:
         return max_num
     
     num[S[end]] += 1
