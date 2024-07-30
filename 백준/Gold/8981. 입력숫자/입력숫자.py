@@ -5,14 +5,14 @@ Y = list(map(int, input().split()))
 X = [0] * N
 
 i, j, cnt = 0, 0, 0
-X[i], Y[j] = Y[j], 0
+X[i] = Y[j]
 j += 1
 i += X[i]
 
 while j < N:
-    while X[i] != 0:
-        i = (i + 1) % N
-    X[i], Y[j] = Y[j], 0
+    while X[i%N] != 0:
+        i += 1
+    X[i%N] = Y[j]
     j += 1
-    i = (i + X[i]) % N
+    i += X[i%N]
 print(*X)
