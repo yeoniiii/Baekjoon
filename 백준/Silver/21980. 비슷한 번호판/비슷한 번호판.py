@@ -1,3 +1,5 @@
+import sys
+input = lambda: sys.stdin.readline().rstrip()
 from itertools import combinations
 
 t = int(input())
