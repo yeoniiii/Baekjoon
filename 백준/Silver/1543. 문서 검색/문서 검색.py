@@ -1,0 +1,5 @@
+S = input()
+l = len(S)
+word = input()
+S = S.replace(word, '')
+print((l-len(S))//len(word))
