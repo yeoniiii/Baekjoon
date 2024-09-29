@@ -21,10 +21,12 @@ def bfs(S):
         building[v] += 1
         if v == D:
             return cnt
-        if v+F <= N and v+F not in l:
-            q.append((v+F, cnt+1))
-        if v-B >= 1 and v-B not in l:
-            q.append((v-B, cnt+1))
+        if v+F <= N:
+            if building[v+F] == 0:
+                q.append((v+F, cnt+1))
+        if v-B >= 1:
+            if building[v-B] == 0:
+                q.append((v-B, cnt+1))
     return 'BUG FOUND'
             
 print(bfs(S))
