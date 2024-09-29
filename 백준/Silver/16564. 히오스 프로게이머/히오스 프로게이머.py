@@ -18,8 +18,6 @@ while l <= r:
     mid = (l+r)//2
     if check(mid) <= K:
         T = mid
-        if check(mid) == K:
-            break
         l = mid+1
     else:
         r = mid-1
