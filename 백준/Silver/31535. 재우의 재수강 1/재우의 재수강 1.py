@@ -1,6 +1,3 @@
-import sys
-input = lambda: sys.stdin.readline().rstrip()
-
 w, h = map(int, input().split())
 n, d = map(int, input().split())
 a = list(map(int, input().split()))
